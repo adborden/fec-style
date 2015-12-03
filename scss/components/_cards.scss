@@ -1,11 +1,9 @@
 // Cards
 //
 // Small boxes that contain content
-// Default layout is image stacked on text
-//
-// .card--mini            - For use in sidebars
-// .card--horizontal      - Image next to text
-// .card--wide            - Card takes up half of grid
+// Default layout is image stacked on text.
+// All sizing is handled by using .grid and .grid__item,
+// either as containers or on the cards themselves
 //
 // Markup:
 // <div class="container">
@@ -24,13 +22,8 @@
   background-color: $neutral;
   border-radius: 4px;
   font-size: 1.6rem;
-  margin-bottom: 2rem;
   padding: 2rem;
   text-align: center;
-  
-  @include media($med) {
-    @include span-columns(2)
-  }
 }
 
 .card__image-link {
@@ -52,9 +45,12 @@
   font-size: 1.4rem;
 }
 
-.card--mini {
+// Horizontal cards
+// Image on the left, content on the right
+
+.card--horizontal {
   font-size: 1.4rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   text-align: left;
 
   .card__image {
@@ -66,38 +62,23 @@
     padding: 0;
   }
 
-  @include media($med) {
-    @include span-columns(3)
-  }
-}
-
-.card--horizontal {
-  font-size: 1.4rem;
-  padding: 1rem 2rem;
-  text-align: left;
-
-  .card__image {
-    @include span-columns(2 of 4);
-  }
-
-  .card__content {
-    float: left;
+  // Option: .card--full-bleed makes the image full height
+  &.card--full-bleed {
     padding: 0;
-    width: calc(100% - 8rem); // Minus the max-width + gutter of the icons
-  }
 
-  @include media($med) {
-    @include span-columns(4)
-  }
-}
+    .card__image img {
+      border-radius: 4px 0 0 4px;
+      display: block;
+    }
 
-.card--vertical {
-  font-size: 1.4rem;
-
-  .card__content {
-    padding: 0;
+    .card__content {
+      padding: 1rem 2rem 1rem 0;
+    }
   }
 }
+
+// Wide cards
+// Used on data landing page. Big image container with a background
 
 .card--wide {
   padding: 0;
@@ -133,10 +114,6 @@
     float: left;
   }
 
-  @include media($med) {
-    @include span-columns(6);
-  }
-
   @include media($lg) {
     min-height: 26rem;
 
@@ -165,11 +142,11 @@
       max-width: 10rem;
       display: inline;
       float: none;
-    }    
+    }
   }
 }
 
-// For lists of links, such as on data landing page cards 
+// For lists of links, such as on data landing page cards
 .card__links {
   font-family: $sans-serif;
   font-weight: normal;
@@ -225,23 +202,16 @@
   font-weight: bold;
 }
 
-// Tiled cards
-// 
-// For showing multiple rows of cards, use:
-// 
-// .tiled-cards
-//
-// Styleguide components.cards.tiled-cards
-
-
-.tiled-cards--2-wide {
-  .card:nth-child(even) {
-    margin-right: 0;
-  }
+.card--secondary-contrast {
+  background-color: $bright-red;
 }
 
-.tiled-cards--3-wide {
-  .card:nth-child(3n) {
-    margin-right: 0;
+// Neutral cards
+
+.card--neutral {
+  background-color: $beige;
+
+  .card__image__container {
+    background-color: $primary;
   }
 }
