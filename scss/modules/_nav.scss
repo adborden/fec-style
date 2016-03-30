@@ -209,13 +209,27 @@
 }
 
 .site-nav__button--right {
-  @include u-background-image('i-book--secondary');
   float: right;
   height: 3.6rem;
 
   &:hover {
-    @include u-background-image('i-book--neutral');
     background-color: lighten($secondary, 10%);
+  }
+}
+
+.site-nav__button--glossary {
+  @include u-background-image('i-book--secondary');
+
+  &:hover {
+    @include u-background-image('i-book--neutral');
+  }
+}
+
+.site-nav__button--search {
+  @include u-background-image('i-search--secondary');
+
+  &:hover {
+    @include u-background-image('i-search--neutral');
   }
 }
 

@@ -49,6 +49,10 @@
   }
 }
 
+.hero--search {
+  @extend .hero--primary;
+}
+
 .hero__action {
   @include span-columns(10);
   @include shift(1);
